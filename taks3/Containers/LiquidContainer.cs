@@ -11,12 +11,21 @@ public class LiquidContainer: Container,IHazardNotifier
         this.isHazardous = isHazardous;
         containerCounter++;
         _serialNumber = $"KON-{ExtractCapital(this.GetType().Name)}-{containerCounter}";
+        
+        
     }
-    protected bool isHazarodus { get; set; }
+    
+
+    // private double mass
+    // {
+    //     get { return mass; }
+    //     set { mass = value; }
+    // }
+    //
     public string SerialNumber => _serialNumber;
     public void NotifyAboutHazardousSituation()
     {
-        Console.WriteLine("Haazardous situation happening"+_serialNumber);
+        Console.WriteLine("Haazardous situation happening "+_serialNumber);
     }
 
     
@@ -25,20 +34,32 @@ public class LiquidContainer: Container,IHazardNotifier
         return $"Serial Number: {_serialNumber}, Mass: {mass}, Height: {height}, Tare Weight: {tareWeight}, Payload: {payload}, Depth:{depth}, ";
     }
 
-    public override void loadwithMass(double mass)
+    public override void loadwithMass(double newMass)
     {double maxCap =0.5*payload;
         if (isHazardous == true)
         {
             Console.WriteLine("Can be filled only up to 50 of capacity %");
-            
-            if (mass>maxCap)
+
+            if (newMass > maxCap)
+               
             {
                 NotifyAboutHazardousSituation();
+                
+                this.mass= maxCap;
+                Console.WriteLine("new mass set to "+mass);
+                
             }
         }
         else
         {
             maxCap = 0.9 * payload;
+            if (newMass>= maxCap)
+            {
+                this.mass = maxCap;
+                NotifyAboutHazardousSituation();
+                Console.WriteLine("new mass set to "+mass);
+                
+            }
         }
     }
 }

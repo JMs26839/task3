@@ -65,7 +65,7 @@ public abstract class Container
 
     public  virtual void loadwithMass(double mass)
     {
-        if (mass>= payload)
+        if (this.mass>= payload)
         {
             throw new OverfillException("your container is overloaded");
         }
