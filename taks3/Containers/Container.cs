@@ -8,10 +8,10 @@ public abstract class Container
     protected double tareWeight;
     protected double payload;
     protected double depth;
-    protected string _serialNumber;
-    protected static int containerCounter;
+    // protected string _serialNumber;
+    // protected static int containerCounter;
 
-    public string SerialNumber => _serialNumber;
+    //public string SerialNumber => _serialNumber;
       
     
     public Container(
@@ -23,8 +23,8 @@ public abstract class Container
         this.tareWeight = tareWeight;
         this.payload = payload;
         this.depth = depth;
-        containerCounter++;
-        _serialNumber = $"KON-{ExtractCapital(this.GetType().Name)}-{containerCounter}";
+        // containerCounter++;
+        // _serialNumber = $"KON-{ExtractCapital(this.GetType().Name)}-{containerCounter}";
     }
 
     // public Container(string containerName)
@@ -39,9 +39,8 @@ public abstract class Container
     //     serialNumber = "Kon-" + extractCapital(containerName)+"-"+ containerCounter.ToString(); 
     // }
 
-    
 
-    string ExtractCapital(string input)
+    protected string ExtractCapital(string input)
     {
         string result = "";
         foreach (char c in input )

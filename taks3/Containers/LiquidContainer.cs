@@ -3,13 +3,17 @@ namespace taks3;
 public class LiquidContainer: Container,IHazardNotifier
 {
     protected bool isHazardous;
+    protected string _serialNumber;
+    protected static int containerCounter;
     public LiquidContainer(double mass, double height, double tareWeight, double payload,double depth,bool isHazardous)
         : base(mass, height, tareWeight, payload,  depth)
     {
         this.isHazardous = isHazardous;
+        containerCounter++;
+        _serialNumber = $"KON-{ExtractCapital(this.GetType().Name)}-{containerCounter}";
     }
     protected bool isHazarodus { get; set; }
-
+    public string SerialNumber => _serialNumber;
     public void NotifyAboutHazardousSituation()
     {
         Console.WriteLine("Haazardous situation happening"+_serialNumber);
