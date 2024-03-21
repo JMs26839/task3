@@ -16,10 +16,39 @@ public class GasContainer: Container
     {
         return $"Serial Number: {_serialNumber}, Mass: {mass}, Height: {height}, Tare Weight: {tareWeight}, Payload: {payload}, Depth:{depth}";
     }
-
-    public override void emptyCargo()
+    public void NotifyAboutHazardousSituation()
     {
-        Console.WriteLine("Due to safety reasons we are obliged to leave 5% of gas in the container");
-        
+        Console.WriteLine(" Cannot, empty container belowe 95% of its mass and pressure "+_serialNumber);
+    }
+    
+    public  void emptyCargo(double press, double masa)
+    { 
+        double minPressure= pressure*0.05;
+        Console.WriteLine("Remember Due to safety reasons we are obliged to leave 5% of gas in the container");
+        if (press <= minPressure)
+        {
+            
+            NotifyAboutHazardousSituation();
+            pressure = minPressure;
+        }
+        double minMass= payload*0.05;
+
+        if (masa<= minMass)
+        {
+            NotifyAboutHazardousSituation();
+            mass = minMass;
+
+        }
+    }
+
+    public override void loadwithMass(double mass)
+    {
+        if (mass > payload)
+        {
+            this.mass = payload;
+            //Console.WriteLine("new maximal mass: "+ payload);
+            throw new Exception("Error, maximal payload ");
+            
+        }
     }
 }

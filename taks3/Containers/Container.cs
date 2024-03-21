@@ -12,8 +12,19 @@ public abstract class Container
     // protected static int containerCounter;
 
     //public string SerialNumber => _serialNumber;
+    public double Mass
+    {
+        get => mass; 
+        set => mass = value;
+    }
+    
+        
+     
+        
+
       
     
+
     public Container(
         double mass, double height, double tareWeight, double payload,double depth)
     {
@@ -26,6 +37,10 @@ public abstract class Container
         // containerCounter++;
         // _serialNumber = $"KON-{ExtractCapital(this.GetType().Name)}-{containerCounter}";
     }
+
+    
+    
+       
 
     // public Container(string containerName)
     // {

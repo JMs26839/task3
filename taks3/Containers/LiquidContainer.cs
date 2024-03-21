@@ -53,7 +53,7 @@ public class LiquidContainer: Container,IHazardNotifier
         else
         {
             maxCap = 0.9 * payload;
-            if (newMass>= maxCap)
+            if (newMass> maxCap)
             {
                 this.mass = maxCap;
                 NotifyAboutHazardousSituation();
